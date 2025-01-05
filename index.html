@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicious</title>
+    <link rel="stylesheet" href="style.css"> <!-- Підключення CSS -->
+</head>
+<body>
+    <!-- Harder Section (Title) -->
+    <header id="header">
+        <h1>"Delicious"</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#contacts">Contacts</a></li>
+            <li><a href="#reservation">Reservation</a></li>
+        </ul>
+    </nav>
+
+     <!-- Home Section -->
+<section id="home">
+    <h2>Welcome to Cafe "Delicious"!</h2>
+    <p>We offer delicious dishes and a cozy atmosphere</p>
+
+
+
+    <!-- Галерея -->
+    <div class="gallery">
+        <img src="images/img11.jpeg" alt="Інтер'єр 1">
+        <img src="images/img21.jpeg" alt="Інтер'єр 2">
+        <img src="images/img31.jpeg" alt="Інтер'єр 3">
+        <img src="images/img41.jpeg" alt="Інтер'єр 4">
+    </div>
+</section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <h2>Menu</h2>
+        <div class="menu-columns">
+            <!-- Перший стовпчик -->
+            <div class="menu-column">
+                <h3>Coffee</h3>
+                <img src="images/C.jpg" alt="Coffee">
+                <ul>
+                    <li>Latte</li>
+                    <li>Americano</li>
+                    <li>Cappuccino</li>
+                    <li>Espresso</li>
+                </ul>
+            </div>
+    
+            <!-- Другий стовпчик -->
+            <div class="menu-column">
+                <h3>Drinks</h3>
+                <img src="images/DR.jpg" alt="Drinks">
+                <ul>
+                    <li>Fresh Juice</li>
+                    <li>Mineral Water</li>
+                    <li>Milkshake</li>
+                    <li>Smoothie</li>
+                </ul>
+            </div>
+    
+            <!-- Третій стовпчик -->
+            <div class="menu-column">
+                <h3>Desserts</h3>
+                <img src="images/D.jpg" alt="Other">
+                <ul>
+                    <li>Croissant</li>
+                    <li>Cupcace</li>
+                    <li>Tiramisu</li>
+                    <li>Macaroons</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section id="contacts">
+        <h2>Contacts</h2>
+        <p>Address: 1 Khlibna St., Kyiv</p>
+        <p>Phone: +38 (044) 123-45-67</p>
+        <p>Working hours: Mon-Fri 10:00 AM - 10:00 PM, Sat-Sun 12:00 PM - 11:00 PM</p>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation">
+        <h2>Table Reservation</h2>
+        <form id="reservation-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" required>
+
+            <label for="dish">Choose a dish or drink:</label>
+            <select id="dish" name="dish" required>
+                <option value="" disabled selected>-- Select an option --</option>
+                <optgroup label="Coffee">
+                    <option value="latte">Latte</option>
+                    <option value="americano">Americano</option>
+                    <option value="cappuccino">Cappuccino</option>
+                    <option value="espresso">Espresso</option>
+                </optgroup>
+                <optgroup label="Drinks">
+                    <option value="fresh-juice">Fresh Juice</option>
+                    <option value="mineral-water">Mineral Water</option>
+                    <option value="milkshake">Milkshake</option>
+                    <option value="smoothie">Smoothie</option>
+                </optgroup>
+                <optgroup label="Other">
+                    <option value="sandwich">Sandwich</option>
+                    <option value="salad">Salad</option>
+                    <option value="french-fries">French Fries</option>
+                    <option value="desserts">Desserts</option>
+                </optgroup>
+            </select>
+
+            <button type="submit">Reserve</button>
+        </form>
+    </section>
+
+    <script src="script.js"></script> <!-- Підключення JavaScript -->
+</body>
+</html>
