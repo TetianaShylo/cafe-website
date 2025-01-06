@@ -73,7 +73,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background-color: #f52c09; /* Помаранчевий колір на hover */
+    background: linear-gradient(15deg, #f4d210, #f14e1c);
     border-radius: 5px;
 }
 
