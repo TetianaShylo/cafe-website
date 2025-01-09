@@ -47,6 +47,60 @@ body {
     margin: 0;
 }
 
+/* Стилі для контейнера кнопок */
+.auth-buttons {
+    position: absolute; /* Розташування у правому верхньому куті */
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px; /* Відстань між кнопками */
+}
+
+/* Загальний стиль кнопок */
+.auth-buttons .btn {
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #f48d10, #f14e1c); /* Градієнт синього кольору */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+/* Ефект при наведенні */
+.auth-buttons .btn:hover {
+    background: #f14e1c; /* Темніший градієнт */
+}
+
+/* Додаткові стилі для адаптації */
+@media (max-width: 768px) {
+    .auth-buttons {
+        position: static; /* Позиція для малих екранів */
+        margin-top: 10px;
+        justify-content: center; /* Центруємо кнопки */
+    }
+
+    .auth-buttons .btn {
+        font-size: 12px; /* Зменшуємо текст кнопок */
+        padding: 8px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-buttons {
+        flex-direction: column; /* Розміщуємо кнопки вертикально */
+        align-items: center;
+    }
+
+    .auth-buttons .btn {
+        width: 100%; /* Ширина кнопок на весь екран */
+        max-width: 200px; /* Максимальна ширина */
+    }
+}
+
+
+
 nav {
     background-color: #333; /* Темний фон для навігації */
     text-align: center;
