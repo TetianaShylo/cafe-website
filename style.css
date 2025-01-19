@@ -311,8 +311,8 @@ button:hover {
 
 #contacts {
     text-align: center;
-    padding: 40px 20px;
-    background-color: #fff; /* Білий фон */
+    padding: 1px 20px;
+    background-color: #fafafa; /* Білий фон */
 }
 
 #contacts h2 {
@@ -338,69 +338,124 @@ button:hover {
     }
 }
 
+/* Вирівнювання секції посередині екрану */
 #reservation {
-    background-color: #fafafa; /* Світлий фон */
-    padding: 40px 20px;
+    display: flex; /* Використовуємо flexbox для центрування */
+    flex-direction: column; /* Вирівнюємо вміст по вертикалі */
+    justify-content: center; /* Центруємо по вертикалі */
+    align-items: center; /* Центруємо по горизонталі */
+    height: 40vh; /* Висота секції — весь екран */
+    text-align: center;
+    background-color: #f8f9fa; /* Світлий фон секції */
+}
+
+/* Стилі кнопки */
+#reservation a {
+    text-decoration: none; /* Забираємо підкреслення у посилання */
+}
+
+#reservation button {
+    padding: 15px 30px; /* Внутрішній відступ кнопки */
+    font-size: 18px; /* Розмір тексту кнопки */
+    font-weight: bold; /* Товстий шрифт */
+    color: #f8f9fa; /* Білий текст */
+    background-color: #383838; /* Синій фон кнопки */
+    border: none; /* Без обводки */
+    border-radius: 5px; /* Закруглені краї кнопки */
+    cursor: pointer; /* Курсор у вигляді руки */
+    box-shadow: 0px 4px 6px #3b3a3a(0, 0, 0, 0.2); /* Тінь для кнопки */
+    transition: all 0.3s ease; /* Анімація при наведенні */
+}
+
+/* Ефекти при наведенні */
+#reservation button:hover {
+    background-color: #3b3e41; /* Темніший синій колір при наведенні */
+    transform: scale(1.05); /* Легке збільшення кнопки */
+}
+
+/* Для мобільних пристроїв */
+@media (max-width: 768px) {
+    #reservation button {
+        padding: 12px 20px; /* Менші відступи */
+        font-size: 16px; /* Менший розмір тексту */
+    }
+}
+
+/* Застосовуємо стилі лише для сторінки з класом .reservation-page */
+.reservation-page body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.reservation-page header {
+    background-color: #434548;
+    color: white;
+    padding: 20px;
     text-align: center;
 }
 
-#reservation h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: #333;
+.reservation-page h1 {
+    margin: 0;
 }
 
-#reservation form {
-    max-width: 600px;
-    margin: 0 auto; /* Центруємо форму */
+.reservation-page main {
     padding: 20px;
-    background-color: #fff; /* Білий фон для форми */
-    border-radius: 8px; /* Закруглені кути */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Легке тінювання */
 }
 
-#reservation label {
+.reservation-page #reservation-form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.reservation-page label {
     display: block;
-    font-size: 1.1em;
-    margin: 10px 0;
-    color: #333;
-}
-
-#reservation input,
-#reservation select,
-#reservation button {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-#reservation button {
-    background-color: #333; /* Темний фон кнопки */
-    color: white;
-    cursor: pointer;
+    margin-bottom: 8px;
     font-weight: bold;
 }
 
-#reservation button:hover {
-    background-color: #555; /* Трохи світліший відтінок при наведенні */
+.reservation-page input[type="text"],
+.reservation-page input[type="date"],
+.reservation-page input[type="time"],
+.reservation-page select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-/* Адаптація для мобільних пристроїв */
-@media (max-width: 768px) {
-    #reservation h2 {
-        font-size: 2em;
-    }
+.reservation-page button {
+    background-color: #464449;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+}
 
-    #reservation form {
-        padding: 15px;
-    }
+.reservation-page button:hover {
+    background-color: #515551;
+}
 
-    #reservation input,
-    #reservation select,
-    #reservation button {
-        font-size: 1.1em;
-    }
+.reservation-page footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.reservation-page footer p {
+    margin: 0;
 }

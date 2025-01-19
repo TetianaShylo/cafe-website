@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Reservation</title>
+    <link rel="stylesheet" href="style.css"> <!-- Підключення CSS -->
+</head>
+<body class="reservation-page">
+    <header>
+        <h1>Reserve a Table</h1>
+    </header>
+
+    <main>
+        <form id="reservation-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" required>
+
+            <label for="dish">Choose a dish or drink:</label>
+            <select id="dish" name="dish" required>
+                <option value="" disabled selected>-- Select an option --</option>
+                <optgroup label="Coffee">
+                    <option value="latte">Latte</option>
+                    <option value="americano">Americano</option>
+                    <option value="cappuccino">Cappuccino</option>
+                    <option value="espresso">Espresso</option>
+                </optgroup>
+                <optgroup label="Drinks">
+                    <option value="fresh-juice">Fresh Juice</option>
+                    <option value="mineral-water">Mineral Water</option>
+                    <option value="milkshake">Milkshake</option>
+                    <option value="smoothie">Smoothie</option>
+                </optgroup>
+                <optgroup label="Other">
+                    <option value="sandwich">Sandwich</option>
+                    <option value="salad">Salad</option>
+                    <option value="french-fries">French Fries</option>
+                    <option value="desserts">Desserts</option>
+                </optgroup>
+            </select>
+
+            <button type="submit">Reserve</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; Delicious Cafe</p>
+    </footer>
+</body>
+</html>
