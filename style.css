@@ -257,6 +257,9 @@ button:hover {
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 20px; /* Відстань між стовпчиками */
+    height: 32vw;
+    max-height: 32vw;
+    margin-bottom: 160px;
 }
 
 .menu-column {
@@ -349,7 +352,7 @@ button:hover {
     flex-direction: column; /* Вирівнюємо вміст по вертикалі */
     justify-content: center; /* Центруємо по вертикалі */
     align-items: center; /* Центруємо по горизонталі */
-    height: 40vh; /* Висота секції — весь екран */
+    min-height: 40vh; /* Висота секції — весь екран */
     text-align: center;
     background-color: #f8f9fa; /* Світлий фон секції */
 }
@@ -410,7 +413,7 @@ button:hover {
     padding: 20px;
 }
 
-.reservation-page #reservation-form {
+#reservation-form {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -419,16 +422,16 @@ button:hover {
     margin: 0 auto;
 }
 
-.reservation-page label {
+#reservation-form label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
 }
 
-.reservation-page input[type="text"],
-.reservation-page input[type="date"],
-.reservation-page input[type="time"],
-.reservation-page select {
+#reservation-form input[type="text"],
+#reservation-form input[type="date"],
+#reservation-form input[type="time"],
+#reservation-form select {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css"> <!-- Підключення CSS -->
 </head>
 <body id="main">
+    <div id="app">
     <!-- Harder Section (Title) -->
     <header id="header">
         <h1>Delicious</h1>
@@ -48,63 +49,45 @@
     <section id="menu">
         <h2>MENU</h2>
         <div class="menu-columns">
-            <!-- Перший стовпчик -->
-            <div class="menu-column">
-                <h3>Coffee</h3>
-                <img src="images/C.jpg" alt="Coffee">
+
+            <div class="menu-column" v-for="(item, index) in menuArray">
+                <h3>{{item.title}}</h3>
+                <img :src="item.image" :alt="item.title">
                 <ul>
-                    <li>Latte</li>
-                    <li>Espresso</li>
-                    <li>Americano</li>
-                    <li>Cappuccino</li>
-                    <li>Gingerbread Latte</li>
-                    <li>Salted Caramel Latte</li>
-                    <li>Coconat Matcha Latte</li>
-                    <li>Macadamia Hazelnut Latte</li>
-                    
+                    <li v-for="(itemProduct, indexProduct) in item.product">{{itemProduct}}</li>
                 </ul>
             </div>
-    
-            <!-- Другий стовпчик -->
-            <div class="menu-column">
-                <h3>Drinks</h3>
-                <img src="images/DR.jpg" alt="Drinks">
-                <ul>
-                    <li>Lemonade</li>
-                    <li>Milkshake</li>
-                    <li>Pina Colada</li>
-                    <li>Blue Hawaiian</li>
-                    <li>Match Bubble Tea</li>
-                    <li>Coconut Lime Soda</li>
-                    <li>White Chocolate Mocha</li>
-                    <li>Kiwi Lime Italian Soda</li>
-                </ul>
-            </div>
-    
-            <!-- Третій стовпчик -->
-            <div class="menu-column">
-                <h3>Desserts</h3>
-                <img src="images/D.jpg" alt="Other">
-                <ul>
-                    <li>Croissant</li>
-                    <li>Cupcace</li>
-                    <li>Tiramisu</li>
-                    <li>Macaroons</li>
-                    <li>Croissant</li>
-                    <li>Cupcace</li>
-                    <li>Tiramisu</li>
-                    <li>Macaroons</li>
-                </ul>
-            </div>
+
         </div>
     </section>
 
     <!-- Reservation Section -->
 <section id="reservation">
     <h2>Table Reservation</h2>
-    <a href="reservation.html" target="_blank">
+    <a hre="" v-on:click="reserveOpen()"  v-if="!reserveForm">
         <button>Reserve a Table</button>
     </a>
+
+<form id="reservation-form" v-if="reserveForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required>
+
+    <label for="time">Time:</label>
+    <input type="time" id="time" name="time" required>
+
+    <label for="dish">Choose a dish or drink:</label>
+    <select id="dish" name="dish" required>
+        <option value="" disabled selected>-- Select an option --</option>
+        <optgroup v-for="(item, index) in optionArray" :label="item.title">
+            <option v-for="(itemOption, indexOption) in item.product" v-model="itemOption.value">{{itemOption.text}}</option>
+        </optgroup>
+    </select>
+
+    <button type="submit">Reserve</button>
+</form>
 </section>
 
  <!-- Contacts Section -->
@@ -115,7 +98,9 @@
     <p>Working hours: Mon-Fri 10:00 AM - 10:00 PM, Sat-Sun 12:00 PM - 11:00 PM</p>
 </section>
 
+</div>
 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script src="script.js"></script> <!-- Підключення JavaScript -->
 </body>
 </html>
