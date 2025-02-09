@@ -68,6 +68,26 @@ body {
     transition: background 0.3s ease;
 }
 
+.popup-box {
+    display: none;
+    position: absolute;
+    top: 50px; /* Відстань від кнопок */
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.popup-box input {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 5px;
+}
+
 /* Ефект при наведенні */
 .auth-buttons .btn:hover {
     background: #f14e1c; /* Темніший градієнт */
@@ -212,32 +232,6 @@ nav ul li a:hover {
 
 
 
-/* Стилі для кнопок
-button {
-    position: absolute;
-    top: 50%;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 10;
-    font-size: 30px;
-}
-
-button.prev {
-    left: 10px;
-    transform: translateY(-50%);
-}
-
-button.next {
-    right: 10px;
-    transform: translateY(-50%);
-}
-
-button:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-}*/
 
 
 #menu {

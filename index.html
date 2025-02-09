@@ -12,9 +12,33 @@
         <h1>Delicious</h1>
 
         <div class="auth-buttons">
-            <button class="btn sign-in">Sign In</button>
-            <button class="btn register">Register</button>
+            <button class="btn sign-in" id="sign-in-btn">Sign In</button>
+            <button class="btn register" id="register-btn">Register</button>
             <button class="btn sign-out" style="display: none;">Sign Out</button>
+        </div>
+        
+        <!-- Попап для Sign In -->
+        <div id="sign-in-box" class="popup" style="display: none;">
+            <form id="sign-in-form">
+                <label for="sign-in-username">Username:</label>
+                <input type="text" id="sign-in-username" name="username" required><br><br>
+                <label for="sign-in-password">Password:</label>
+                <input type="password" id="sign-in-password" name="password" required><br><br>
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
+        
+        <!-- Попап для Register -->
+        <div id="register-box" class="popup" style="display: none;">
+            <form id="register-form">
+                <label for="register-username">Username:</label>
+                <input type="text" id="register-username" name="username" required><br><br>
+                <label for="register-email">Email:</label>
+                <input type="email" id="register-email" name="email" required><br><br>
+                <label for="register-password">Password:</label>
+                <input type="password" id="register-password" name="password" required><br><br>
+                <button type="submit">Register</button>
+            </form>
         </div>
     </header>
 
@@ -114,8 +138,7 @@
     <p>Phone: +38 (044) 123-45-67</p>
     <p>Working hours: Mon-Fri 10:00 AM - 10:00 PM, Sat-Sun 12:00 PM - 11:00 PM</p>
 </section>
-
-
+    
     <script src="script.js"></script> <!-- Підключення JavaScript -->
 </body>
 </html>
