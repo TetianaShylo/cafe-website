@@ -1,3 +1,41 @@
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        reserveForm: false,
+    },
+
+    methods: {
+        
+        reserveOpen() {
+            this.$set(this, "reserveForm", true);
+        },
+
+        reserveClose() {
+            this.$set(this, "reserveForm", false);
+        },
+
+    },
+
+    computed: {
+
+    },
+
+    mounted() {
+
+    },
+
+    updated: function () {
+
+    },
+
+    created: function () {
+
+    }
+
+});
+
+
 // Обробник події для форми
 document.getElementById("reservation-form").addEventListener("submit", function (event) {
     event.preventDefault(); // Зупиняємо стандартне відправлення форми
