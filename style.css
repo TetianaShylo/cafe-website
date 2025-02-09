@@ -284,12 +284,16 @@ button:hover {
 .menu-column ul {
     list-style-type: none;
     padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s;
 }
 
-.menu-column ul li {
-    font-size: 1.1em;
-    color: #555;
-    margin-bottom: 10px;
+.menu-column:hover ul {
+    list-style-type: none;
+    padding: 0;
+    max-height: 1000px;
+    overflow: hidden;
 }
 
 /* Адаптація для мобільних пристроїв */
@@ -459,3 +463,5 @@ button:hover {
 .reservation-page footer p {
     margin: 0;
 }
+
+
