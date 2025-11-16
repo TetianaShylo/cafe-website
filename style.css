@@ -7,6 +7,7 @@ body {
     color: #333; /* Темно-сірий текст */
     line-height: 1.6; /* Робимо текст більш читабельним */
     font-size: 16px; /* Базовий розмір шрифту */
+    box-sizing: border-box;
 }
 
 /* Адаптація для великих екранів (десктопи) */
@@ -88,6 +89,9 @@ body {
     padding: 5px;
 }
 
+
+
+    
 /* Ефект при наведенні */
 .auth-buttons .btn:hover {
     background: #f14e1c; /* Темніший градієнт */
@@ -253,7 +257,7 @@ nav ul li a:hover {
     gap: 20px; /* Відстань між стовпчиками */
     height: 32vw;
     max-height: 32vw;
-    margin-bottom: 160px;
+    margin-bottom: 0px;
 }
 
 .menu-column {
@@ -264,6 +268,7 @@ nav ul li a:hover {
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     height: fit-content;
+    z-index: 100;
 }
 
 .menu-column h3 {
@@ -346,7 +351,7 @@ nav ul li a:hover {
     flex-direction: column; /* Вирівнюємо вміст по вертикалі */
     justify-content: center; /* Центруємо по вертикалі */
     align-items: center; /* Центруємо по горизонталі */
-    min-height: 40vh; /* Висота секції — весь екран */
+    height: 200px; /* Висота секції — весь екран */
     text-align: center;
     background-color: #f8f9fa; /* Світлий фон секції */
 }
@@ -414,6 +419,31 @@ nav ul li a:hover {
     padding: 20px;
     max-width: 500px;
     margin: 0 auto;
+    position: fixed;
+    z-index: 101;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#reservation-form .close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #999;
+  cursor: pointer;
+  line-height: 1;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#reservation-form .close:hover {
+  color: #333;
 }
 
 #reservation-form label {
@@ -462,4 +492,104 @@ nav ul li a:hover {
     margin: 0;
 }
 
+.popup {
+  position: fixed;
+  top: -150%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  border-radius: 12px;
+  background: linear-gradient(15deg, #f4d210, #f14e1c);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  padding: 24px;
+  z-index: 1000;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: top 0.5s ease;
+}
 
+.popup-view {
+    top: 50%;
+}
+
+.popup .block-form {
+    display: flex;
+    gap: 0;
+    flex-direction: column;
+}
+
+.popup label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 6px;
+    text-align: left;
+}
+
+.popup .title {
+    margin: 0 0 0px 0;
+    text-align: center;
+    color: #333;
+    font-size: 18px;
+}
+
+.popup .input {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: #fff!important;
+  box-sizing: border-box;
+}
+
+.popup .input:-webkit-autofill,
+.popup .input:-webkit-autofill:hover,
+.popup .input:-webkit-autofill:focus,
+.popup .input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: #333 !important;
+}
+
+.popup .input:focus {
+  background: white;
+  box-shadow: inset 0 0 0 1px #007bff;
+}
+
+.popup .button {
+  width: 100%;
+  padding: 12px;
+  background: #333;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.popup .button:hover {
+  background: #110c0c;
+}
+
+.popup .close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #999;
+  cursor: pointer;
+  line-height: 1;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup .close:hover {
+  color: #333;
+}
