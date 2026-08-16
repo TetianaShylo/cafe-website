@@ -3,134 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delicious</title>
-    <link rel="stylesheet" href="style.css"> <!-- Підключення CSS -->
+    <title>Artisan Café & Bakery | Kyiv</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body id="main">
+<body>
     <div id="app">
-       
-    <!-- Harder Section (Title) -->
-    <header id="header">
-        <h1>Delicious</h1>
+        <!-- Navigation -->
+        <header class="glass-nav">
+            <div class="logo">☕ Artisan Café</div>
+            <nav>
+                <a href="#menu">Menu</a>
+                <a href="#reservation">Reservation</a>
+                <a href="#contacts">Contacts</a>
+            </nav>
+            <div class="cart-trigger" @click="toggleCart">
+                🛒 <span>Cart ({{ cart.length }})</span>
+            </div>
+        </header>
 
-        <div class="auth-buttons">
-            <button class="btn sign-in" id="sign-in-btn" v-on:click="signinboxOpen()">Sign In</button>
-            <button class=btn register id=register-btn v-on:click=registerboxOpen()>Register</button>
-            <button class="btn sign-out" style="display: none;">Sign Out</button>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <span class="badge">Fresh Pastries & Specialty Coffee</span>
+                <h1>Your Perfect Spot for Warm Gatherings</h1>
+                <p>Cozy atmosphere in the heart of Kyiv. Experience specialty arabica brews and artisan baked goods.</p>
+                <div class="hero-buttons">
+                    <a href="#menu" class="btn btn-primary">Explore Menu</a>
+                    <a href="#reservation" class="btn btn-secondary">Reserve a Table</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="container">
+            <div class="section-title">
+                <h2>Our Menu</h2>
+                <p>Crafted with premium local ingredients</p>
+            </div>
+
+            <!-- Categories Filter -->
+            <div class="categories-filter">
+                <button 
+                    class="filter-btn" 
+                    :class="{ active: selectedCategory === 'all' }" 
+                    @click="selectedCategory = 'all'">
+                    All Items
+                </button>
+                <button 
+                    v-for="cat in categories" 
+                    :key="cat" 
+                    class="filter-btn" 
+                    :class="{ active: selectedCategory === cat }" 
+                    @click="selectedCategory = cat">
+                    {{ cat }}
+                </button>
+            </div>
+
+            <!-- Menu Cards Grid -->
+            <div class="menu-grid">
+                <div class="card glass-card" v-for="item in filteredMenu" :key="item.id">
+                    <div class="card-icon">{{ item.icon }}</div>
+                    <div class="card-body">
+                        <span class="card-category">{{ item.category }}</span>
+                        <h3>{{ item.name }}</h3>
+                        <p class="card-desc">{{ item.description }}</p>
+                        <div class="card-footer">
+                            <span class="price">{{ item.price }} ₴</span>
+                            <button class="btn-add" @click="addToCart(item)">+ Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reservation Section -->
+        <section id="reservation" class="container">
+            <div class="reservation-box glass-card">
+                <div class="section-title">
+                    <h2>Book a Table</h2>
+                    <p>Select your favorite drink or dish, and we'll prepare everything for your visit</p>
+                </div>
+
+                <form @submit.prevent="submitReservation" class="res-form">
+                    <div class="form-group">
+                        <label>Your Name:</label>
+                        <input type="text" v-model="reservation.name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number:</label>
+                        <input type="tel" v-model="reservation.phone" required placeholder="+38 (044) 123-45-67">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Choose a dish or drink:</label>
+                        <select v-model="reservation.dish" required>
+                            <option value="" disabled>-- Select an option --</option>
+                            <optgroup v-for="cat in menuData" :key="cat.title" :label="cat.title">
+                                <option v-for="prod in cat.product" :key="prod.id" :value="prod.name">
+                                    {{ prod.name }} ({{ prod.price }} ₴)
+                                </option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Number of Guests:</label>
+                        <input type="number" v-model="reservation.guests" min="1" max="10" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Confirm Reservation</button>
+                </form>
+
+                <p v-if="reservationSuccess" class="success-message">
+                    🎉 Thank you, {{ reservation.name }}! Your table has been reserved.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contacts Section -->
+        <footer id="contacts">
+            <div class="container footer-content">
+                <div class="footer-col">
+                    <h3>☕ Artisan Café</h3>
+                    <p>Authentic specialty coffee and bakery crafted with passion.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Location</h4>
+                    <p>1 Khlibna St., Kyiv, Ukraine</p>
+                    <p>+38 (044) 123-45-67</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Opening Hours</h4>
+                    <p>Mon - Fri: 10:00 AM - 10:00 PM</p>
+                    <p>Sat - Sun: 12:00 PM - 11:00 PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Artisan Café. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <!-- Cart Sidebar -->
+        <div class="cart-sidebar" :class="{ open: isCartOpen }">
+            <div class="cart-header">
+                <h3>Your Order</h3>
+                <button class="close-btn" @click="toggleCart">✕</button>
+            </div>
+            <div class="cart-items" v-if="cart.length > 0">
+                <div class="cart-item" v-for="(item, index) in cart" :key="index">
+                    <div>
+                        <strong>{{ item.name }}</strong>
+                        <div class="cart-price">{{ item.price }} ₴</div>
+                    </div>
+                    <button class="remove-btn" @click="removeFromCart(index)">Remove</button>
+                </div>
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <strong>{{ cartTotal }} ₴</strong>
+                </div>
+                <button class="btn btn-primary btn-block" @click="checkout">Checkout</button>
+            </div>
+            <div v-else class="empty-cart">
+                <p>Your cart is empty 🥐</p>
+            </div>
         </div>
-        
-        <!-- Попап для Sign In -->
-<div class="popup" :class="{ 'popup-view' : signinbox }">
-    <div class="close" v-on:click="signinboxOpen()">&times;</div>
-  <h2 class="title">Sign In</h2>
-  <input type="text" v-model="signInLogin" class="input login" placeholder="Логін">
-  <input type="password" v-model="signInPass" class="input password" placeholder="Пароль">
-  <div class="button" v-on:click="submitSignIn()">Sign In</div>
-</div>
-        
-        <!-- Попап для Register -->
-<div class="popup" :class="{ 'popup-view' : registerbox }">
-    <div class="close" v-on:click="registerboxOpen()">&times;</div>
-  <h2 class="title">Register</h2>
-            <div class="block-form">
-                <label for="register-username">Username:</label>
-                <input v-model="registerUsername" class="input" type="text" id="register-username" name="username" required>
-            </div>
-            <div class="block-form">
-                <label for="register-email">Email:</label>
-                <input v-model="registerEmail" class="input" type="email" id="register-email" name="email" required>
-            </div>
-            <div class="block-form">
-                <label for="register-password">Password:</label>
-                <input v-model="registerPass" class="input" type="password" id="register-password" name="password" required>
-            </div>
-  <div class="button" v-on:click="submitRegister()">Register</div>
-</div>
-    </header>
-
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#menu">Menu</a></li>
-            <li><a href="#contacts">Contacts</a></li>
-            <li><a href="#reservation">Reservation</a></li>
-        </ul>
-    </nav>
-
-     <!-- Home Section -->
-<section id="home">
-    <h2>Welcome to Cafe "Delicious"!</h2>
-    <p>We offer delicious dishes and a cozy atmosphere</p>
-
-
-
-    <!-- Галерея -->
-    <div class="gallery">
-        <img src="images/img11.jpeg" alt="Інтер'єр 1">
-        <img src="images/img21.jpeg" alt="Інтер'єр 2">
-        <img src="images/img31.jpeg" alt="Інтер'єр 3">
-        <img src="images/img41.jpeg" alt="Інтер'єр 4">
     </div>
-</section>
 
-    <!-- Menu Section -->
-    <section id="menu">
-        <h2>MENU</h2>
-        <div class="menu-columns">
-
-            <div class="menu-column" v-for="(item, index) in menuArray">
-                <h3>{{item.title}}</h3>
-                <img :src="item.image" :alt="item.title">
-                <ul>
-                    <li v-for="(itemProduct, indexProduct) in item.product">{{itemProduct}}</li>
-                </ul>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Reservation Section -->
-<section id="reservation">
-    <h2>Table Reservation</h2>
-    <a hre="" v-on:click="reserveOpen()"  v-if="!reserveForm">
-        <button>Reserve a Table</button>
-    </a>
-
-<form id="reservation-form" v-if="reserveForm">
-    <div class="close" v-on:click="reserveClose()">&times;</div>
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
-
-    <label for="date">Date:</label>
-    <input type="date" id="date" name="date" required>
-
-    <label for="time">Time:</label>
-    <input type="time" id="time" name="time" required>
-
-    <label for="dish">Choose a dish or drink:</label>
-    <select id="dish" name="dish" required>
-        <option value="" disabled selected>-- Select an option --</option>
-        <optgroup v-for="(item, index) in optionArray" :label="item.title">
-            <option v-for="(itemOption, indexOption) in item.product" v-model="itemOption.value">{{itemOption.text}}</option>
-        </optgroup>
-    </select>
-
-    <button type="submit">Reserve</button>
-</form>
-</section>
-
- <!-- Contacts Section -->
- <section id="contacts">
-    <h2>Contacts</h2>
-    <p>Address: 1 Khlibna St., Kyiv</p>
-    <p>Phone: +38 (044) 123-45-67</p>
-    <p>Working hours: Mon-Fri 10:00 AM - 10:00 PM, Sat-Sun 12:00 PM - 11:00 PM</p>
-</section>
-
-</div>
-
+    <!-- Vue 3 and App Script -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="script.js"></script> <!-- Підключення JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
